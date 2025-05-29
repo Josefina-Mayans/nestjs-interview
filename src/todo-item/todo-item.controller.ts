@@ -21,22 +21,26 @@ export class TodoItemController {
   }
 
   @Get(':listId')
-  findByList(@Param('listId') listId: string) {
+  findByList(@Param('listId') listId: number) {
     return this.service.findByList(Number(listId));
   }
 
-  /* @Put(':id')
-  update(@Param('id') id: string, @Body('description') description: string) {
-    return this.service.update(id, description);
+  @Put(':listId/:itemId')
+  update(
+    @Param('listId') listId: number,
+    @Param('itemId') itemId: number,
+    @Body('description') description: string,
+  ) {
+    return this.service.update(Number(listId), Number(itemId), description);
   }
 
-  @Patch(':id/complete')
-  complete(@Param('id') id: string) {
-    return this.service.complete(id);
+  @Patch(':listId/:itemId/complete')
+  complete(@Param('listId') listId: number, @Param('itemId') itemId: number) {
+    return this.service.complete(Number(listId), Number(itemId));
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.service.delete(id);
-  } */
+  @Delete(':listId/:itemId')
+  remove(@Param('listId') listId: number, @Param('itemId') itemId: number) {
+    return this.service.delete(Number(listId), Number(itemId));
+  }
 }

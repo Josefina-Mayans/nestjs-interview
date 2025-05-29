@@ -22,7 +22,7 @@ export class TodoItemService {
     return item;
   }
 
-  /*   update(todoListId: number, itemId: number, description: string): TodoItem {
+  update(todoListId: number, itemId: number, description: string): TodoItem {
     const item = this.todoListsService.getItem(todoListId, itemId);
     if (!item) throw new NotFoundException('TodoItem not found');
     item.description = description;
@@ -38,7 +38,7 @@ export class TodoItemService {
 
   delete(todoListId: number, itemId: number): boolean {
     return this.todoListsService.removeItem(todoListId, itemId);
-  } */
+  }
 
   findByList(todoListId: number): TodoItem[] {
     const list = this.todoListsService.get(todoListId);

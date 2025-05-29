@@ -59,6 +59,21 @@ export class TodoListsService {
     return todoList;
   }
 
+  getItem(todoListId: number, itemId: number): TodoItem {
+    const list = this.get(todoListId);
+    return list?.items?.find((item) => item.id === itemId);
+  }
+
+  removeItem(todoListId: number, itemId: number): boolean {
+    const list = this.get(todoListId);
+    const index = list?.items?.findIndex((item) => item.id === itemId);
+    if (index !== undefined && index > -1) {
+      list.items.splice(index, 1);
+      return true;
+    }
+    return false;
+  }
+
   private nextId(): number {
     const last = this.todolists
       .map((x) => x.id)
